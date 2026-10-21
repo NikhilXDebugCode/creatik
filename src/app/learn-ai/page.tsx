@@ -47,10 +47,10 @@ export default function LearnAIOverviewPage() {
               <span>Technical Training Academy • Jaipur, Rajasthan</span>
             </div>
             <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-              Master Practical Engineering Through Direct Project Execution
+              Master Practical Engineering Through Hands-On Projects
             </h1>
             <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base md:text-lg mt-3 sm:mt-4 leading-relaxed">
-              We reject passive video tutorials and generic certificate mills. Our curriculum is structured around real code commits, system design, API integrations, and hands-on laboratory experiments in Jaipur.
+              We believe in learning by doing. Our training is built around practical projects, real code repositories, industry tools, and dedicated laboratory coaching in Jaipur.
             </p>
 
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">

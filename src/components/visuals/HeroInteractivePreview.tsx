@@ -9,68 +9,75 @@ import {
   Boxes,
   CheckCircle2,
   ShieldCheck,
-  Terminal,
   Zap,
   ArrowRight,
-  Database,
-  Lock,
+  Clock,
+  Sparkles,
+  Search,
 } from '@/components/ui/Icons';
 import { WorkflowCanvas } from './WorkflowCanvas';
 
 export function HeroInteractivePreview() {
   const [tab, setTab] = useState<'workflow' | 'rag' | 'web' | 'robotics'>('workflow');
 
+  const tabItems = [
+    {
+      id: 'workflow' as const,
+      label: 'Automated Workflows',
+      icon: Workflow,
+      badge: 'Business',
+      color: 'sky',
+    },
+    {
+      id: 'rag' as const,
+      label: 'AI Assistants',
+      icon: Bot,
+      badge: 'Business',
+      color: 'sky',
+    },
+    {
+      id: 'web' as const,
+      label: 'Web Applications',
+      icon: Globe,
+      badge: 'Solutions',
+      color: 'sky',
+    },
+    {
+      id: 'robotics' as const,
+      label: 'Robotics Lab',
+      icon: Boxes,
+      badge: 'Training',
+      color: 'emerald',
+    },
+  ];
+
   return (
-    <div className="w-full mt-8 sm:mt-10">
-      {/* Tab controls - Horizontal swipe on mobile, centered flex on larger screens */}
-      <div className="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar pb-2 sm:pb-0 sm:flex-wrap sm:justify-center -mx-4 px-4 sm:mx-0 sm:px-0">
-        <button
-          onClick={() => setTab('workflow')}
-          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
-            tab === 'workflow'
-              ? 'bg-sky-600 text-white border-sky-500 shadow-md shadow-sky-600/20'
-              : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
-          }`}
-        >
-          <Workflow className="w-4 h-4" />
-          <span>n8n Workflow Canvas</span>
-        </button>
+    <div className="w-full mt-6 sm:mt-10">
+      {/* Tab controls - 2x2 grid on mobile for perfect fit without horizontal overflow; flex row on tablet/desktop */}
+      <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-5">
+        {tabItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = tab === item.id;
+          const isEmerald = item.color === 'emerald';
 
-        <button
-          onClick={() => setTab('rag')}
-          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
-            tab === 'rag'
-              ? 'bg-sky-600 text-white border-sky-500 shadow-md shadow-sky-600/20'
-              : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
-          }`}
-        >
-          <Bot className="w-4 h-4" />
-          <span>RAG Agent with Citations</span>
-        </button>
-
-        <button
-          onClick={() => setTab('web')}
-          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
-            tab === 'web'
-              ? 'bg-sky-600 text-white border-sky-500 shadow-md shadow-sky-600/20'
-              : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
-          }`}
-        >
-          <Globe className="w-4 h-4" />
-          <span>Next.js Full-Stack Stack</span>
-        </button>
-
-        <button
-          onClick={() => setTab('robotics')}
-          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
-            tab === 'robotics'
-              ? 'bg-emerald-600 text-white border-emerald-500 shadow-md shadow-emerald-600/20'
-              : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
-          }`}
-        >
-          <Boxes className="w-4 h-4" />
-          <span>Jaipur Robotics Laboratory</span>
-        </button>
+          return (
+            <button
+              key={item.id}
+              onClick={() => setTab(item.id)}
+              type="button"
+              className={`flex items-center justify-center sm:justify-start gap-2 px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border min-h-[44px] ${
+                isActive
+                  ? isEmerald
+                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-md shadow-emerald-600/25 ring-1 ring-emerald-400/30'
+                    : 'bg-sky-600 text-white border-sky-500 shadow-md shadow-sky-600/25 ring-1 ring-sky-400/30'
+                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
+              }`}
+            >
+              <Icon className="w-4 h-4 shrink-0" />
+              <span className="truncate">{item.label}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Dynamic Tab Content */}
@@ -79,15 +86,16 @@ export function HeroInteractivePreview() {
 
         {tab === 'rag' && (
           <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-sky-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl">
-            <div className="bg-slate-50 dark:bg-[#0F172A] px-3.5 py-2.5 sm:px-4 sm:py-3 border-b border-slate-200 dark:border-white/10 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
+            {/* Top Bar */}
+            <div className="bg-slate-100 dark:bg-[#0F172A] px-3.5 py-2.5 sm:px-4 sm:py-3 border-b border-slate-200 dark:border-white/10 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
               <div className="flex items-center gap-2 min-w-0">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block animate-pulse shrink-0" />
-                <span className="text-[11px] sm:text-xs font-mono text-slate-900 dark:text-slate-200 font-semibold truncate">
-                  Grounded Enterprise RAG Assistant
+                <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">
+                  AI Assistant for Customer Support &amp; Inquiries
                 </span>
               </div>
-              <span className="text-[10px] sm:text-[11px] font-mono text-sky-700 bg-sky-50 border border-sky-200 dark:text-sky-400 dark:bg-sky-500/10 dark:border-sky-500/20 px-2 py-0.5 rounded shrink-0">
-                Hallucination Guardrails: Active
+              <span className="text-[10px] sm:text-[11px] font-medium text-sky-700 bg-sky-50 border border-sky-200 dark:text-sky-400 dark:bg-sky-500/10 dark:border-sky-500/20 px-2.5 py-0.5 rounded shrink-0">
+                Grounded in Verified Documents
               </span>
             </div>
 
@@ -95,9 +103,9 @@ export function HeroInteractivePreview() {
               {/* Interactive Chat Stream */}
               <div className="lg:col-span-7 space-y-3.5">
                 {/* User Message */}
-                <div className="flex items-start gap-3 justify-end">
+                <div className="flex items-start gap-2.5 sm:gap-3 justify-end">
                   <div className="bg-sky-50 border border-sky-200 dark:bg-sky-600/30 dark:border-sky-500/40 rounded-2xl rounded-tr-sm p-3.5 text-xs text-slate-900 dark:text-white max-w-sm">
-                    &quot;Can we deploy your n8n workflows and RAG chatbots on our private AWS account under Indian data sovereignty regulations?&quot;
+                    &quot;Can your team set up automated workflows that connect our website inquiries directly to our internal CRM?&quot;
                   </div>
                   <div className="w-7 h-7 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center text-xs text-slate-800 dark:text-white font-bold shrink-0">
                     U
@@ -105,46 +113,57 @@ export function HeroInteractivePreview() {
                 </div>
 
                 {/* AI Grounded Response */}
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2.5 sm:gap-3">
                   <div className="w-7 h-7 rounded-full bg-sky-600 flex items-center justify-center text-xs text-white font-bold shrink-0">
                     AI
                   </div>
                   <div className="bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10 rounded-2xl rounded-tl-sm p-4 text-xs text-slate-800 dark:text-slate-200 max-w-lg space-y-2.5">
                     <p className="leading-relaxed">
-                      Yes. All Creatik AI business implementations support <strong>sovereign deployment</strong>. We can containerize your n8n instances and pgvector databases directly within your private AWS VPC (Mumbai region ap-south-1) with KMS customer-managed encryption.
+                      Yes. We build automated workflow pipelines that capture leads, validate contact information, create records in your CRM, and notify your team instantly on Slack or email within seconds.
                     </p>
-                    <div className="p-2.5 rounded-lg bg-sky-100/70 border border-sky-300 dark:bg-sky-500/10 dark:border-sky-500/20 text-[11px] text-sky-900 dark:text-sky-300">
-                      <span className="font-semibold block mb-0.5">Verified Citation:</span>
-                      <span>SOP-SEC-2026: Sovereign Deployment Architecture Guide (Creatik IT Solutions LLP)</span>
+                    <div className="p-2.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-[11px] text-emerald-800 dark:text-emerald-300 flex items-start gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5 text-emerald-600 dark:text-emerald-400" />
+                      <span>Answers are drawn strictly from your approved company materials to avoid false claims.</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* RAG Verification Breakdown */}
-              <div className="lg:col-span-5 bg-slate-50 dark:bg-[#080D18] border border-slate-200 dark:border-white/10 rounded-xl p-4 space-y-3 text-xs">
-                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider block border-b border-slate-200 dark:border-white/5 pb-2">
-                  Retrieval Verification Pipeline
+              {/* Business Benefits Card */}
+              <div className="lg:col-span-5 bg-slate-50 dark:bg-[#080D18] border border-slate-200 dark:border-white/10 rounded-xl p-4 sm:p-5 space-y-3.5 text-xs shadow-sm">
+                <span className="text-xs font-bold text-slate-900 dark:text-white block border-b border-slate-200 dark:border-white/5 pb-2">
+                  Why Businesses Use AI Assistants
                 </span>
 
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-slate-700 dark:text-slate-300 text-[11px]">
-                    <span>Dense Vector Similarity (BGE-M3):</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold">0.912</span>
+                <div className="space-y-2.5">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-slate-900 dark:text-white block">24/7 Availability:</span>
+                      <p className="text-slate-600 dark:text-slate-400 mt-0.5">Instant responses to customer inquiries at any hour of the day.</p>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between text-slate-700 dark:text-slate-300 text-[11px]">
-                    <span>BM25 Keyword Alignment:</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold">0.884</span>
+
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-slate-900 dark:text-white block">Accurate &amp; Consistent:</span>
+                      <p className="text-slate-600 dark:text-slate-400 mt-0.5">Trained strictly on your verified price lists, FAQs, and service guidelines.</p>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between text-slate-700 dark:text-slate-300 text-[11px]">
-                    <span>Guardrail Refusal Threshold:</span>
-                    <span className="text-slate-500 dark:text-slate-400 font-mono">&gt; 0.750</span>
+
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-semibold text-slate-900 dark:text-white block">Smooth Human Handoff:</span>
+                      <p className="text-slate-600 dark:text-slate-400 mt-0.5">Complex inquiries are routed directly to the right specialist on your team.</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-200 dark:border-white/5 flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-400">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span>Deterministic boundaries: Out-of-scope prompts trigger refusal rather than false claims.</span>
+                <div className="pt-2 border-t border-slate-200 dark:border-white/5 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                  <span>Channel: Website &amp; WhatsApp</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-medium">Safe &amp; Controlled</span>
                 </div>
               </div>
             </div>
@@ -153,45 +172,45 @@ export function HeroInteractivePreview() {
 
         {tab === 'web' && (
           <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-sky-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl p-4 sm:p-6 md:p-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 dark:border-white/10 gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 dark:border-white/10 gap-3">
               <div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-                  <span>Next.js Modern Architecture Topology</span>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Globe className="w-5 h-5 text-sky-600 dark:text-sky-400 shrink-0" />
+                  <span>Fast, Modern Websites Built for Real Results</span>
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Server Components, TypeScript type-safety, and database normalization with 95+ Core Web Vitals.
+                  Designed to look professional, load instantly across mobile devices, and convert visitors into inquiries.
                 </p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 font-mono text-xs shrink-0">
-                Lighthouse Score: 98/100
+              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 font-medium text-xs self-start sm:self-auto shrink-0">
+                Mobile-Optimized Speed
               </span>
             </div>
 
-            <div className="relative w-full h-48 sm:h-60 rounded-xl overflow-hidden my-5 border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-900">
+            <div className="relative w-full h-44 sm:h-56 rounded-xl overflow-hidden my-5 border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-900">
               <Image
                 src="/images/services/service-web-development.png"
-                alt="Next.js Full-Stack Architecture Topology"
+                alt="Responsive Web Application Layout"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 60vw"
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 text-xs">
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10">
-                <span className="text-sky-600 dark:text-sky-400 font-mono font-bold block mb-1">01. Frontend Layer</span>
-                <p className="text-slate-600 dark:text-slate-300">Next.js App Router, React 19 Server Components, zero layout shift (CLS: 0.00), responsive styling.</p>
+                <span className="text-sky-600 dark:text-sky-400 font-bold block mb-1">01. Mobile Performance</span>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Fast loading times on phones and tablets to reduce bounce rates and improve Google rankings.</p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10">
-                <span className="text-sky-600 dark:text-sky-400 font-mono font-bold block mb-1">02. Edge & API Layer</span>
-                <p className="text-slate-600 dark:text-slate-300">FastAPI & Next.js Server Actions, authenticated route handlers, automated rate-limiting, and webhook queuing.</p>
+                <span className="text-sky-600 dark:text-sky-400 font-bold block mb-1">02. Clear Visitor Experience</span>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Clean typography, thoughtful navigation, and high visual contrast across light and dark modes.</p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10">
-                <span className="text-sky-600 dark:text-sky-400 font-mono font-bold block mb-1">03. Persistence Layer</span>
-                <p className="text-slate-600 dark:text-slate-300">PostgreSQL with pgvector embeddings, Redis session cache, automated encrypted backups, and audit logs.</p>
+                <span className="text-sky-600 dark:text-sky-400 font-bold block mb-1">03. High Conversion Focus</span>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Frictionless inquiry forms, transparent service descriptions, and prominent call-to-action buttons.</p>
               </div>
             </div>
           </div>
@@ -199,22 +218,22 @@ export function HeroInteractivePreview() {
 
         {tab === 'robotics' && (
           <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-emerald-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl p-4 sm:p-6 md:p-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 dark:border-white/10 gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 border-b border-slate-200 dark:border-white/10 gap-3">
               <div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Boxes className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                  <span>Physical Computing & Edge AI Laboratory (Jaipur Hub)</span>
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Boxes className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  <span>Hands-On Robotics &amp; Engineering Lab (Jaipur Hub)</span>
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Hands-on laboratory coaching in Gurjar Ki Thadi / Gopalpura Bypass with physical hardware stations.
+                  In-person practical training with real microcontrollers and hardware workstations in Jaipur.
                 </p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 font-mono text-xs shrink-0">
-                Jaipur Laboratory Cohort
+              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-400 font-medium text-xs self-start sm:self-auto shrink-0">
+                Physical Lab Coaching
               </span>
             </div>
 
-            <div className="relative w-full h-48 sm:h-60 rounded-xl overflow-hidden my-5 border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-900">
+            <div className="relative w-full h-44 sm:h-56 rounded-xl overflow-hidden my-5 border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-slate-900">
               <Image
                 src="/images/courses/course-robotics.png"
                 alt="Jaipur Robotics Workbench & Microcontrollers"
@@ -224,20 +243,20 @@ export function HeroInteractivePreview() {
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 text-xs">
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10">
-                <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold block mb-1">Microcontroller Workbenches</span>
-                <p className="text-slate-600 dark:text-slate-300">ESP32, Arduino Uno, Raspberry Pi 4, digital breadboards, dual-channel oscilloscopes, and logic analyzers.</p>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Real Hardware Workbenches</span>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Dedicated electronics stations equipped with ESP32, Arduino, sensors, and testing equipment.</p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10">
-                <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold block mb-1">Sensor & Telemetry Kits</span>
-                <p className="text-slate-600 dark:text-slate-300">Ultrasonic rangefinders, IMU 6-DOF gyro/accelerometer, ESP32-CAM computer vision, and MQTT brokers.</p>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Project-Based Learning</span>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Build complete autonomous rover prototypes and sensor controllers rather than just watching theory slides.</p>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10">
-                <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold block mb-1">TinyML Edge Inference</span>
-                <p className="text-slate-600 dark:text-slate-300">On-device neural network quantization for gesture recognition and audio classification without cloud latency.</p>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold block mb-1">Small Cohort Mentorship</span>
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">Personal guidance by practicing engineers who build and debug real physical systems.</p>
               </div>
             </div>
           </div>

@@ -127,11 +127,11 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-3">
           {/* Brand Identity */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1 shrink-0"
+            className="flex items-center gap-2 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1 min-w-0"
           >
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex items-center justify-center p-1.5 shadow-sm group-hover:border-sky-500/50 transition-colors shrink-0">
               <Image
@@ -143,16 +143,16 @@ export function Navbar() {
                 priority
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col min-w-0">
               <div className="flex items-center gap-1.5">
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-300 transition-colors">
+                <span className="text-base sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-300 transition-colors truncate">
                   Creatik
                 </span>
-                <span className="text-[10px] sm:text-xs px-1.5 py-0.5 rounded font-mono font-semibold bg-sky-500/10 dark:bg-sky-500/20 text-sky-700 dark:text-sky-400 border border-sky-500/20 dark:border-sky-500/30">
+                <span className="text-[10px] sm:text-xs px-1.5 py-0.5 rounded font-mono font-semibold bg-sky-500/10 dark:bg-sky-500/20 text-sky-700 dark:text-sky-400 border border-sky-500/20 dark:border-sky-500/30 shrink-0">
                   AI
                 </span>
               </div>
-              <span className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase">
+              <span className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase truncate">
                 Jaipur • Applied Tech
               </span>
             </div>
@@ -346,11 +346,11 @@ export function Navbar() {
           </div>
 
           {/* Mobile Right Controls: Toggle + Menu Button */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 lg:hidden shrink-0">
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="w-10 h-10 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
+              className="w-10 h-10 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors shrink-0"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
@@ -362,8 +362,8 @@ export function Navbar() {
 
       {/* Mobile drawer with smooth scrolling and accessible touch targets */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 z-40 bg-slate-900/40 dark:bg-black/60 backdrop-blur-xs flex flex-col justify-start">
-          <div className="border-b border-slate-200 dark:border-white/10 bg-white dark:bg-[#070B14] px-4 pt-3 pb-6 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] overflow-y-auto shadow-2xl space-y-4">
+        <div className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 z-50 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm flex flex-col justify-start">
+          <div className="border-b border-slate-200 dark:border-white/10 bg-white dark:bg-[#070B14] px-4 pt-3 pb-8 max-h-[calc(100dvh-4rem)] sm:max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain shadow-2xl space-y-4">
             {/* For Business Section with Accordion */}
             <div className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-[#0D1424] overflow-hidden">
               <button

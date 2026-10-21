@@ -13,31 +13,31 @@ export function WorkflowProcessSection() {
   const steps = [
     {
       step: '01',
-      title: 'Discovery & System Mapping',
-      desc: 'We map out your exact manual handoffs, data schemas, API access restrictions, and latency requirements. We do not write code until the architecture is mathematically and operationally validated.',
+      title: 'Discovery & Scope Mapping',
+      desc: 'We understand your current manual bottlenecks, existing business tools, and primary goals to design a solution that fits your exact workflow.',
       icon: Compass,
-      focus: 'Schema & Flowcharts',
+      focus: 'Clear Project Scope',
     },
     {
       step: '02',
-      title: 'Sandbox Prototyping & Guardrails',
-      desc: 'We build isolated proof-of-concepts using dummy payloads, strict JSON validation schemas, and prompt boundary guardrails to eliminate edge-case failures.',
+      title: 'Prototyping & Workflow Design',
+      desc: 'We build an initial working prototype and test it with realistic business scenarios so your team can review the experience before rollout.',
       icon: Layers,
-      focus: 'Isolated Mock Testing',
+      focus: 'Interactive Review',
     },
     {
       step: '03',
-      title: 'Stress Testing & Evaluation Harness',
-      desc: 'Before any pipeline or bot connects to customer data, we benchmark it against adversarial prompts, rate-limit thresholds, and failure retry scenarios.',
+      title: 'Reliability & Accuracy Testing',
+      desc: 'Before going live, we test response times, unexpected inputs, and data consistency to ensure your operations run smoothly without interruption.',
       icon: TestTube2,
-      focus: 'Red-Teaming & Telemetry',
+      focus: 'Thorough Verification',
     },
     {
       step: '04',
-      title: 'Production Deployment & SLA Support',
-      desc: 'Deployment to your sovereign infrastructure or private cloud VPC, accompanied by automated alerting webhooks, architecture documentation, and ongoing maintenance.',
+      title: 'Smooth Launch & Team Support',
+      desc: 'We deploy the solution securely, provide complete walkthroughs for your staff, and offer ongoing support so you get lasting value.',
       icon: Rocket,
-      focus: 'Sovereign VPC Handoff',
+      focus: 'Full Support & Documentation',
     },
   ];
 

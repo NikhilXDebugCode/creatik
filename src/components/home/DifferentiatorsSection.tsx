@@ -51,10 +51,10 @@ export function DifferentiatorsSection() {
             <span>Why Creatik AI</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-            Engineering Rigor over Marketing Hype
+            Our Standards &amp; Principles
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm md:text-base mt-3 leading-relaxed">
-            In an industry crowded with superficial AI wrappers and exaggerated claims, we anchor our services and training in verifiable software craftsmanship.
+            Whether automating business workflows or training future engineers in Jaipur, we adhere to high operational and educational standards.
           </p>
         </div>
 

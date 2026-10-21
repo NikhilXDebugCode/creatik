@@ -73,11 +73,11 @@ export default function BusinessOverviewPage() {
       <section id="services-list" className="py-20 bg-white dark:bg-[#090E1A] border-b border-slate-200 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
-              Verified Business Service Offerings
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+              Practical Solutions for Your Business
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
-              Every service is delivered with complete source code handoff, sovereign hosting capabilities, and full architectural documentation.
+            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
+              Custom software and automation flows tailored to save your team time, improve customer communication, and support your growth.
             </p>
           </div>
 
