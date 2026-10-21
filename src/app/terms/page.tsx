@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="pt-28 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="pt-20 sm:pt-28 pb-16 sm:pb-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 text-xs font-semibold text-sky-700 dark:text-sky-400 mb-4">
           <FileText className="w-3.5 h-3.5" />
           <span>Legal Agreement</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+        <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3 sm:mb-4">
           Terms of Service
         </h1>
         <p className="text-xs text-slate-500 dark:text-slate-400 mb-10">

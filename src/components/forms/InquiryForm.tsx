@@ -141,7 +141,7 @@ export function InquiryForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6"
+      className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-white/10 rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl space-y-5 sm:space-y-6"
       noValidate
     >
       {/* Audience Track Switcher */}
@@ -149,20 +149,20 @@ export function InquiryForm({
         <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
           Select Your Inquiry Type
         </label>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2 sm:gap-3">
           <button
             type="button"
             onClick={() => {
               setAudience('business');
               setFormData((prev) => ({ ...prev, serviceOrProgram: '' }));
             }}
-            className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+            className={`flex items-center justify-center gap-2 py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all border min-h-[44px] ${
               audience === 'business'
                 ? 'bg-sky-50 border-sky-400 text-sky-800 dark:bg-sky-500/15 dark:border-sky-500/50 dark:text-sky-300 shadow-sm'
                 : 'bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <Briefcase className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+            <Briefcase className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
             <span>For Business</span>
           </button>
 
@@ -172,13 +172,13 @@ export function InquiryForm({
               setAudience('learning');
               setFormData((prev) => ({ ...prev, serviceOrProgram: '' }));
             }}
-            className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+            className={`flex items-center justify-center gap-2 py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all border min-h-[44px] ${
               audience === 'learning'
                 ? 'bg-emerald-50 border-emerald-400 text-emerald-800 dark:bg-emerald-500/15 dark:border-emerald-500/50 dark:text-emerald-300 shadow-sm'
                 : 'bg-slate-50 dark:bg-white/5 border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>Learn AI</span>
           </button>
         </div>
@@ -196,7 +196,7 @@ export function InquiryForm({
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="e.g. Vikram Sharma"
-            className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
+            className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
               validationErrors.name ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-200 dark:border-white/10'
             }`}
           />
@@ -215,7 +215,7 @@ export function InquiryForm({
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="vikram@example.com"
-            className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
+            className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
               validationErrors.email ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-200 dark:border-white/10'
             }`}
           />
@@ -236,7 +236,7 @@ export function InquiryForm({
             value={formData.organization}
             onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
             placeholder={audience === 'business' ? 'e.g. Acme Logistics Pvt Ltd' : 'e.g. Final Year B.Tech / Working Pro'}
-            className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
+            className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10 text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
           />
         </div>
 
@@ -250,7 +250,7 @@ export function InquiryForm({
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="+91 98765 43210"
-            className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
+            className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10 text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
           />
         </div>
       </div>
@@ -266,7 +266,7 @@ export function InquiryForm({
             id="serviceOrProgram"
             value={formData.serviceOrProgram}
             onChange={(e) => setFormData({ ...formData, serviceOrProgram: e.target.value })}
-            className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
+            className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-base sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
               validationErrors.serviceOrProgram
                 ? 'border-rose-500 ring-1 ring-rose-500'
                 : 'border-slate-200 dark:border-white/10'
@@ -298,7 +298,7 @@ export function InquiryForm({
             id="timeline"
             value={formData.timeline}
             onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-            className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
+            className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border border-slate-200 dark:border-white/10 text-base sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
           >
             <option value="Immediate / Urgent">Immediate / Within 2 Weeks</option>
             <option value="Within 30 Days">Within 30 Days</option>
@@ -326,7 +326,7 @@ export function InquiryForm({
               ? 'Tell us about the manual bottlenecks, databases, or API integrations you need built or automated...'
               : 'Tell us about your current programming experience and what you want to achieve through this training...'
           }
-          className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
+          className={`w-full px-3.5 py-2.5 rounded-lg bg-slate-50 dark:bg-[#0E172B] border text-base sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors ${
             validationErrors.message ? 'border-rose-500 ring-1 ring-rose-500' : 'border-slate-200 dark:border-white/10'
           }`}
         />
@@ -345,15 +345,15 @@ export function InquiryForm({
 
       {/* Privacy guarantee & submit button */}
       <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400">
-          <Lock className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
-          <span>Strict privacy: No spam, marketing blasts, or unauthorized data sharing.</span>
+        <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 text-center sm:text-left">
+          <Lock className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
+          <span>Strict privacy: No spam or unauthorized data sharing.</span>
         </div>
 
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 disabled:opacity-50 text-white font-medium text-sm shadow-md shadow-sky-600/20 transition-all"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 disabled:opacity-50 text-white font-medium text-sm shadow-md shadow-sky-600/20 transition-all min-h-[44px]"
         >
           {status === 'submitting' ? (
             <>

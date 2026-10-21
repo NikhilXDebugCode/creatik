@@ -30,33 +30,33 @@ export const metadata: Metadata = {
 
 export default function AIChatbotsPage() {
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-20 sm:pt-28 pb-16 sm:pb-20">
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative tech-grid-pattern">
+      <section className="py-12 sm:py-16 md:py-24 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative tech-grid-pattern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 text-xs font-semibold text-sky-700 dark:text-sky-400 mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 text-xs font-semibold text-sky-700 dark:text-sky-400 mb-3 sm:mb-4">
                 <Bot className="w-3.5 h-3.5" />
                 <span>Applied Conversational Intelligence</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 {service.heroHeadline}
               </h1>
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-base md:text-lg mt-3 sm:mt-4 leading-relaxed">
                 {service.heroSubheadline}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a
                   href="#deliverables"
-                  className="px-6 py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-medium text-sm transition-all shadow-md shadow-sky-600/25"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs sm:text-sm transition-all shadow-md shadow-sky-600/25 min-h-[44px]"
                 >
                   Explore RAG Architecture
                 </a>
                 <a
                   href="#inquire"
-                  className="px-6 py-3 rounded-xl bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-200 font-medium text-sm transition-all shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-200 font-medium text-xs sm:text-sm transition-all shadow-sm min-h-[44px]"
                 >
                   Inquire About AI Agents
                 </a>
@@ -73,10 +73,10 @@ export default function AIChatbotsPage() {
                   className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent flex items-end p-4">
-                  <div className="text-xs text-white/95 font-medium flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-                    Domain-Grounded Hybrid Vector Retrieval & Citation Stack
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent flex items-end p-3 sm:p-4">
+                  <div className="text-[10px] sm:text-xs text-white/95 font-medium flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse shrink-0" />
+                    <span className="truncate">Domain-Grounded Hybrid Vector Retrieval &amp; Citation Stack</span>
                   </div>
                 </div>
               </div>

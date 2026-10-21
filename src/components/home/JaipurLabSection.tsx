@@ -36,21 +36,21 @@ export function JaipurLabSection() {
   ];
 
   return (
-    <section className="py-24 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative tech-grid-pattern">
+    <section className="py-12 sm:py-16 md:py-24 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative tech-grid-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
           {/* Left Context */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
               <MapPin className="w-3.5 h-3.5" />
               <span>Jaipur Operations & Laboratory Hub</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               A Dedicated Applied Technology Center in Rajasthan
             </h2>
 
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Creatik AI operates directly from the Gopalpura Bypass / Gurjar Ki Thadi corridor in Jaipur. Our facility combines enterprise client delivery with project-first training stations where learners build software and wire circuits in person.
             </p>
 
@@ -79,7 +79,7 @@ export function JaipurLabSection() {
             <div className="pt-2">
               <Link
                 href="/contact?intent=learn"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm transition-all shadow-md shadow-emerald-600/20"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm transition-all shadow-md shadow-emerald-600/20 min-h-[44px]"
               >
                 <span>Schedule a Laboratory Visit</span>
                 <ArrowRight className="w-4 h-4" />
@@ -89,7 +89,7 @@ export function JaipurLabSection() {
 
           {/* Right Cards: Lab Stations */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden mb-6 border border-slate-200 dark:border-white/10 shadow-sm bg-white dark:bg-[#0B1222]">
+            <div className="relative w-full h-48 sm:h-60 rounded-2xl overflow-hidden mb-6 border border-slate-200 dark:border-white/10 shadow-sm bg-white dark:bg-[#0B1222]">
               <Image
                 src="/images/lab/jaipur-tech-lab.svg"
                 alt="Creatik AI Jaipur Engineering Laboratory & Hardware Stations"
@@ -104,22 +104,22 @@ export function JaipurLabSection() {
               return (
                 <div
                   key={i}
-                  className="bg-white dark:bg-[#0B1222] border border-slate-200 dark:border-white/10 rounded-2xl p-6 hover:border-emerald-400 dark:hover:border-emerald-500/30 transition-all group shadow-sm hover:shadow-md dark:shadow-none"
+                  className="bg-white dark:bg-[#0B1222] border border-slate-200 dark:border-white/10 rounded-2xl p-4 sm:p-6 hover:border-emerald-400 dark:hover:border-emerald-500/30 transition-all group shadow-sm hover:shadow-md dark:shadow-none"
                 >
-                  <div className="flex items-center justify-between mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm">
-                        <Icon className="w-5 h-5" />
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm shrink-0">
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
-                      <h3 className="font-bold text-slate-900 dark:text-white text-base">
+                      <h3 className="font-bold text-slate-900 dark:text-white text-sm sm:text-base">
                         {station.title}
                       </h3>
                     </div>
-                    <span className="text-[11px] font-mono font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 dark:text-emerald-400 dark:bg-emerald-500/10 dark:border-emerald-500/20 px-2.5 py-1 rounded">
+                    <span className="self-start sm:self-auto text-[10px] sm:text-[11px] font-mono font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 dark:text-emerald-400 dark:bg-emerald-500/10 dark:border-emerald-500/20 px-2.5 py-1 rounded">
                       {station.badge}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-13">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-0 sm:pl-12">
                     {station.desc}
                   </p>
                 </div>

@@ -66,18 +66,18 @@ export function Modal({
         aria-hidden="true"
       />
 
-      {/* Dialog Surface */}
+      {/* Dialog Surface with max-height and internal scroll on mobile */}
       <div
         ref={modalRef}
-        className={`relative w-full ${sizeClasses} bg-white dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-10 transition-all`}
+        className={`relative w-full ${sizeClasses} max-h-[92vh] flex flex-col my-auto bg-white dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-10 transition-all`}
       >
         {/* Modal Header */}
-        <div className="flex items-start justify-between p-6 border-b border-slate-100 dark:border-white/5">
+        <div className="flex items-start justify-between p-4 sm:p-6 border-b border-slate-100 dark:border-white/5 shrink-0 gap-3">
           <div>
             {title && (
               <h3
                 id="modal-title"
-                className="text-lg font-bold text-slate-900 dark:text-white"
+                className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug"
               >
                 {title}
               </h3>
@@ -94,7 +94,7 @@ export function Modal({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
+            className="w-9 h-9 min-w-[36px] min-h-[36px] flex items-center justify-center rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors shrink-0"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -102,7 +102,7 @@ export function Modal({
         </div>
 
         {/* Modal Body */}
-        <div className="p-6">{children}</div>
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );

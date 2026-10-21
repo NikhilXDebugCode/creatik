@@ -42,29 +42,29 @@ export function WorkflowProcessSection() {
   ];
 
   return (
-    <section className="py-24 bg-white dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-white dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">
             <Cpu className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
             <span>Our Methodology</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             How We Deliver Reliable Systems
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm md:text-base mt-3 leading-relaxed">
             We avoid black-box magic. Every solution follows an engineering lifecycle designed to prevent downtime, protect data sovereignty, and yield measurable operational efficiency.
           </p>
         </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {steps.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.step}
-                className="bg-slate-50 dark:bg-[#0B1120] border border-slate-200 dark:border-white/10 rounded-2xl p-6 hover:border-sky-400 dark:hover:border-sky-500/40 transition-all flex flex-col justify-between group shadow-sm hover:shadow-md dark:shadow-none"
+                className="bg-slate-50 dark:bg-[#0B1120] border border-slate-200 dark:border-white/10 rounded-2xl p-4 sm:p-6 hover:border-sky-400 dark:hover:border-sky-500/40 transition-all flex flex-col justify-between group shadow-sm hover:shadow-md dark:shadow-none"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

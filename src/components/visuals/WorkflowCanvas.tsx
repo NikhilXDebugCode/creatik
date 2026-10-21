@@ -48,19 +48,19 @@ export function WorkflowCanvas() {
   return (
     <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-sky-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl transition-colors duration-200">
       {/* Top bar */}
-      <div className="bg-slate-100 dark:bg-[#0F172A] px-4 py-3 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
+      <div className="bg-slate-100 dark:bg-[#0F172A] px-3.5 py-2.5 sm:px-4 sm:py-3 border-b border-slate-200 dark:border-white/10 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="flex gap-1.5 shrink-0">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
             <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
           </div>
-          <span className="text-xs font-mono text-slate-700 dark:text-slate-300 ml-2 font-semibold">
+          <span className="text-[11px] sm:text-xs font-mono text-slate-700 dark:text-slate-300 font-semibold truncate max-w-[150px] sm:max-w-none">
             n8n-production-pipeline.json
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Live Execution: Active
           </span>
@@ -68,7 +68,7 @@ export function WorkflowCanvas() {
       </div>
 
       {/* Main Canvas View */}
-      <div className="p-4 sm:p-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+      <div className="p-3 sm:p-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
         {/* Visual Pipeline Nodes */}
         <div className="lg:col-span-7 space-y-2.5">
           <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider block">
@@ -82,7 +82,7 @@ export function WorkflowCanvas() {
                 <div key={node.id} className="relative">
                   <button
                     onClick={() => setActiveNode(node.id)}
-                    className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between ${
+                    className={`w-full text-left p-3 rounded-xl border transition-all flex items-center justify-between min-h-[50px] ${
                       isSelected
                         ? 'bg-sky-50 dark:bg-sky-500/15 border-sky-400 dark:border-sky-500/60 shadow-md shadow-sky-500/10 ring-1 ring-sky-400/50'
                         : 'bg-slate-50 dark:bg-[#0E172B] border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20'

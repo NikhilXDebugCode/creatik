@@ -36,10 +36,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
           {/* Brand & Address Column */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3 group inline-flex">
               <div className="w-9 h-9 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex items-center justify-center p-1 shadow-sm shrink-0">
                 <Image
@@ -79,7 +79,7 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
                 <a
                   href={`mailto:${siteConfig.contact.officialEmail}`}
-                  className="text-slate-800 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-300 transition-colors"
+                  className="text-slate-800 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-300 transition-colors py-1 inline-block"
                 >
                   {siteConfig.contact.officialEmail}
                 </a>
@@ -94,33 +94,33 @@ export function Footer() {
 
           {/* Solutions for Business */}
           <div>
-            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-semibold text-sm mb-4">
+            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-semibold text-sm mb-3 sm:mb-4">
               <Briefcase className="w-4 h-4 text-sky-600 dark:text-sky-400" />
               <span>For Business</span>
             </div>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-1 text-xs">
               <li>
-                <Link href="/business" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/business" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Overview &amp; Methodology
                 </Link>
               </li>
               <li>
-                <Link href="/business/ai-automation" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/business/ai-automation" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   AI Automation &amp; n8n
                 </Link>
               </li>
               <li>
-                <Link href="/business/ai-chatbots" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/business/ai-chatbots" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   AI Agents &amp; Chatbots
                 </Link>
               </li>
               <li>
-                <Link href="/business/web-development" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/business/web-development" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Web &amp; SaaS Development
                 </Link>
               </li>
               <li>
-                <Link href="/business/seo" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/business/seo" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Technical SEO &amp; Growth
                 </Link>
               </li>
@@ -129,33 +129,33 @@ export function Footer() {
 
           {/* Learn AI Track */}
           <div>
-            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-semibold text-sm mb-4">
+            <div className="flex items-center gap-2 text-slate-900 dark:text-white font-semibold text-sm mb-3 sm:mb-4">
               <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>Learn AI</span>
             </div>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-1 text-xs">
               <li>
-                <Link href="/learn-ai" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/learn-ai" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   All Training Tracks
                 </Link>
               </li>
               <li>
-                <Link href="/learn-ai/ai-ml" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/learn-ai/ai-ml" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   AI &amp; Machine Learning
                 </Link>
               </li>
               <li>
-                <Link href="/learn-ai/full-stack" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/learn-ai/full-stack" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Full-Stack Engineering
                 </Link>
               </li>
               <li>
-                <Link href="/learn-ai/digital-marketing" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/learn-ai/digital-marketing" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   AI Digital Marketing
                 </Link>
               </li>
               <li>
-                <Link href="/learn-ai/robotics" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/learn-ai/robotics" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Robotics &amp; Edge AI
                 </Link>
               </li>
@@ -164,30 +164,30 @@ export function Footer() {
 
           {/* Company & Legal Links */}
           <div>
-            <div className="text-slate-900 dark:text-white font-semibold text-sm mb-4">Company &amp; Legal</div>
-            <ul className="space-y-2 text-xs">
+            <div className="text-slate-900 dark:text-white font-semibold text-sm mb-3 sm:mb-4">Company &amp; Legal</div>
+            <ul className="space-y-1 text-xs">
               <li>
-                <Link href="/about" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/about" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   About Creatik AI
                 </Link>
               </li>
               <li>
-                <Link href="/insights" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/insights" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Insights &amp; Research
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/contact" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Contact &amp; Inquiries
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/privacy-policy" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-slate-900 dark:hover:text-white transition-colors">
+                <Link href="/terms" className="py-1.5 inline-block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
                   Terms of Service
                 </Link>
               </li>
@@ -196,18 +196,18 @@ export function Footer() {
         </div>
 
         {/* Bottom row */}
-        <div className="mt-12 pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-200 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
           <p>
             © {currentYear} {siteConfig.legalName} ({siteConfig.name}). All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="hover:text-slate-800 dark:hover:text-slate-300 transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <Link href="/privacy-policy" className="py-1 hover:text-slate-800 dark:hover:text-slate-300 transition-colors">
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-slate-800 dark:hover:text-slate-300 transition-colors">
+            <Link href="/terms" className="py-1 hover:text-slate-800 dark:hover:text-slate-300 transition-colors">
               Terms
             </Link>
-            <Link href="/sitemap.xml" className="hover:text-slate-800 dark:hover:text-slate-300 transition-colors">
+            <Link href="/sitemap.xml" className="py-1 hover:text-slate-800 dark:hover:text-slate-300 transition-colors">
               Sitemap
             </Link>
           </div>

@@ -43,29 +43,29 @@ export function DifferentiatorsSection() {
   ];
 
   return (
-    <section className="py-24 bg-slate-50 dark:bg-[#090E1A] border-b border-slate-200 dark:border-white/5 relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-slate-50 dark:bg-[#090E1A] border-b border-slate-200 dark:border-white/5 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">
             <ShieldCheck className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
             <span>Why Creatik AI</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             Engineering Rigor over Marketing Hype
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm md:text-base mt-3 leading-relaxed">
             In an industry crowded with superficial AI wrappers and exaggerated claims, we anchor our services and training in verifiable software craftsmanship.
           </p>
         </div>
 
         {/* 6 Grid points */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {points.map((pt, idx) => {
             const Icon = pt.icon;
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 hover:border-sky-400 dark:hover:border-sky-500/30 transition-all shadow-sm hover:shadow-md dark:shadow-none"
+                className="p-4 sm:p-6 rounded-2xl bg-white dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 hover:border-sky-400 dark:hover:border-sky-500/30 transition-all shadow-sm hover:shadow-md dark:shadow-none"
               >
                 <div className="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 flex items-center justify-center text-sky-600 dark:text-sky-400 mb-4 shadow-sm">
                   <Icon className="w-5 h-5" />

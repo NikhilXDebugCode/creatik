@@ -14,25 +14,25 @@ export function FaqSection() {
       : faqData.filter((item) => item.category === activeCategory || item.category === 'general');
 
   return (
-    <section className="py-24 bg-white dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-white dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">
             <HelpCircle className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
             <span>Frequently Asked Questions</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             Clear Answers to Common Questions
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-sm mt-3">
+          <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-3">
             Transparent information regarding our business delivery models, curriculum philosophy, and operational policies.
           </p>
 
           {/* Filter Pills */}
-          <div className="mt-8 flex items-center justify-center gap-2">
+          <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2">
             <button
               onClick={() => setActiveCategory('all')}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors min-h-[40px] ${
                 activeCategory === 'all'
                   ? 'bg-sky-600 text-white shadow-sm'
                   : 'bg-slate-100 text-slate-700 hover:text-slate-900 hover:bg-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/10'
@@ -42,7 +42,7 @@ export function FaqSection() {
             </button>
             <button
               onClick={() => setActiveCategory('business')}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors min-h-[40px] ${
                 activeCategory === 'business'
                   ? 'bg-sky-600 text-white shadow-sm'
                   : 'bg-slate-100 text-slate-700 hover:text-slate-900 hover:bg-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/10'
@@ -52,7 +52,7 @@ export function FaqSection() {
             </button>
             <button
               onClick={() => setActiveCategory('learning')}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors min-h-[40px] ${
                 activeCategory === 'learning'
                   ? 'bg-emerald-600 text-white shadow-sm'
                   : 'bg-slate-100 text-slate-700 hover:text-slate-900 hover:bg-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/10'
@@ -64,7 +64,7 @@ export function FaqSection() {
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-3.5">
+        <div className="space-y-3">
           {filteredFaqs.map((faq) => {
             const isOpen = openId === faq.id;
             return (
@@ -78,10 +78,10 @@ export function FaqSection() {
               >
                 <button
                   onClick={() => setOpenId(isOpen ? null : faq.id)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
+                  className="w-full px-4 py-3.5 sm:px-6 sm:py-5 flex items-center justify-between text-left gap-3 sm:gap-4 min-h-[48px]"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-semibold text-slate-900 dark:text-white text-sm sm:text-base">
+                  <span className="font-semibold text-slate-900 dark:text-white text-xs sm:text-sm md:text-base leading-snug">
                     {faq.question}
                   </span>
                   <div
@@ -96,7 +96,7 @@ export function FaqSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-200 dark:border-white/5">
+                  <div className="px-4 pb-4 pt-1 sm:px-6 sm:pb-6 text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed border-t border-slate-200 dark:border-white/5">
                     <p>{faq.answer}</p>
                     <div className="mt-3 flex items-center gap-2 text-[11px] font-mono text-slate-500 dark:text-slate-400">
                       <span className="uppercase font-semibold">Category:</span>

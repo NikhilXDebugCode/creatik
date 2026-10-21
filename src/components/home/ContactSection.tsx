@@ -12,21 +12,21 @@ import { siteConfig } from '@/data/siteConfig';
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-24 bg-slate-50 dark:bg-[#090E1A] relative">
+    <section id="contact" className="py-12 sm:py-16 md:py-24 bg-slate-50 dark:bg-[#090E1A] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
           {/* Left Column: Context & Details */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-4 sm:space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 text-xs font-semibold text-sky-700 dark:text-sky-400">
               <MessageSquare className="w-3.5 h-3.5" />
               <span>Contact & Discovery</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Let&apos;s Discuss Your Architecture or Training Goals
             </h2>
 
-            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Whether you are an enterprise team seeking to automate complex workflows or an aspiring developer looking to master applied AI in Jaipur, we provide direct technical alignment.
             </p>
 

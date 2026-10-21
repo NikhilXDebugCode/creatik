@@ -31,26 +31,26 @@ export function LearningProgramsSection() {
   };
 
   return (
-    <section className="py-24 bg-slate-50 dark:bg-[#090E1A] border-b border-slate-200 dark:border-white/5 relative">
+    <section className="py-12 sm:py-16 md:py-24 bg-slate-50 dark:bg-[#090E1A] border-b border-slate-200 dark:border-white/5 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-16">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-3">
               <GraduationCap className="w-3.5 h-3.5" />
               <span>Learn AI & Tech Academy</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               Practical Engineering Laboratories in Jaipur
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">
+            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm md:text-base mt-3 leading-relaxed">
               We focus strictly on production toolchains, real git commits, system architecture, and verifiable portfolio deliverables—not surface-level theory or generic certificates.
             </p>
           </div>
 
           <Link
             href="/learn-ai"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors group shrink-0"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors group shrink-0 min-h-[44px]"
           >
             <span>Browse All 4 Training Tracks</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -58,31 +58,31 @@ export function LearningProgramsSection() {
         </div>
 
         {/* 4 Tracks Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {learningPrograms.map((program) => {
             const Icon = iconMap[program.id] || Terminal;
             return (
               <div
                 key={program.id}
-                className="bg-white dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 hover:border-emerald-400 dark:hover:border-emerald-500/40 transition-all flex flex-col justify-between group shadow-sm hover:shadow-md dark:shadow-none"
+                className="bg-white dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl p-4 sm:p-6 md:p-8 hover:border-emerald-400 dark:hover:border-emerald-500/40 transition-all flex flex-col justify-between group shadow-sm hover:shadow-md dark:shadow-none"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm">
-                      <Icon className="w-6 h-6" />
+                    <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-sm">
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[11px] text-slate-600 dark:text-slate-400">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">
                       <Calendar className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                       <span>Cohort Schedule on Inquiry</span>
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
                     {program.title}
                   </h3>
 
                   {programImageMap[program.id] && (
-                    <div className="relative w-full h-44 rounded-xl overflow-hidden my-4 border border-slate-200/80 dark:border-white/10 bg-slate-100 dark:bg-slate-900/50">
+                    <div className="relative w-full h-40 sm:h-44 rounded-xl overflow-hidden my-4 border border-slate-200/80 dark:border-white/10 bg-slate-100 dark:bg-slate-900/50">
                       <Image
                         src={programImageMap[program.id]}
                         alt={`${program.title} Curriculum Overview`}
@@ -93,7 +93,7 @@ export function LearningProgramsSection() {
                     </div>
                   )}
 
-                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                     {program.shortDescription}
                   </p>
 
@@ -113,7 +113,7 @@ export function LearningProgramsSection() {
                   </div>
 
                   {/* Capstone Projects */}
-                  <div className="bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 rounded-xl p-4 mb-6">
+                  <div className="bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 rounded-xl p-3.5 sm:p-4 mb-6">
                     <span className="text-xs font-mono font-medium text-slate-700 dark:text-slate-300 block mb-2">
                       Practical Lab Project Highlights:
                     </span>
@@ -128,7 +128,7 @@ export function LearningProgramsSection() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-200 dark:border-white/5 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-200 dark:border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                   <div className="text-xs text-slate-500 dark:text-slate-400">
                     <span>Format: </span>
                     <span className="font-semibold text-slate-700 dark:text-slate-300">Hands-on Laboratory Cohort</span>
@@ -136,7 +136,7 @@ export function LearningProgramsSection() {
 
                   <Link
                     href={`/learn-ai/${program.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 group-hover:translate-x-0.5 transition-transform"
+                    className="w-full sm:w-auto inline-flex items-center justify-center sm:justify-start gap-1.5 py-2.5 px-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 sm:bg-transparent text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 min-h-[44px] transition-colors"
                   >
                     <span>View Full Syllabus</span>
                     <ArrowRight className="w-3.5 h-3.5" />

@@ -21,12 +21,12 @@ export function HeroInteractivePreview() {
   const [tab, setTab] = useState<'workflow' | 'rag' | 'web' | 'robotics'>('workflow');
 
   return (
-    <div className="w-full mt-10">
-      {/* Tab controls */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+    <div className="w-full mt-8 sm:mt-10">
+      {/* Tab controls - Horizontal swipe on mobile, centered flex on larger screens */}
+      <div className="flex items-center gap-2 mb-4 overflow-x-auto no-scrollbar pb-2 sm:pb-0 sm:flex-wrap sm:justify-center -mx-4 px-4 sm:mx-0 sm:px-0">
         <button
           onClick={() => setTab('workflow')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
             tab === 'workflow'
               ? 'bg-sky-600 text-white border-sky-500 shadow-md shadow-sky-600/20'
               : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
@@ -38,7 +38,7 @@ export function HeroInteractivePreview() {
 
         <button
           onClick={() => setTab('rag')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
             tab === 'rag'
               ? 'bg-sky-600 text-white border-sky-500 shadow-md shadow-sky-600/20'
               : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
@@ -50,7 +50,7 @@ export function HeroInteractivePreview() {
 
         <button
           onClick={() => setTab('web')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
             tab === 'web'
               ? 'bg-sky-600 text-white border-sky-500 shadow-md shadow-sky-600/20'
               : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
@@ -62,7 +62,7 @@ export function HeroInteractivePreview() {
 
         <button
           onClick={() => setTab('robotics')}
-          className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border ${
+          className={`flex items-center gap-2 px-3.5 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border shrink-0 min-h-[44px] ${
             tab === 'robotics'
               ? 'bg-emerald-600 text-white border-emerald-500 shadow-md shadow-emerald-600/20'
               : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100 hover:text-slate-900 dark:bg-[#0B1222] dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20'
@@ -79,14 +79,14 @@ export function HeroInteractivePreview() {
 
         {tab === 'rag' && (
           <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-sky-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl">
-            <div className="bg-slate-50 dark:bg-[#0F172A] px-4 py-3 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
-                <span className="text-xs font-mono text-slate-900 dark:text-slate-200 font-semibold">
+            <div className="bg-slate-50 dark:bg-[#0F172A] px-3.5 py-2.5 sm:px-4 sm:py-3 border-b border-slate-200 dark:border-white/10 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block animate-pulse shrink-0" />
+                <span className="text-[11px] sm:text-xs font-mono text-slate-900 dark:text-slate-200 font-semibold truncate">
                   Grounded Enterprise RAG Assistant
                 </span>
               </div>
-              <span className="text-[11px] font-mono text-sky-700 bg-sky-50 border border-sky-200 dark:text-sky-400 dark:bg-sky-500/10 dark:border-sky-500/20 px-2 py-0.5 rounded">
+              <span className="text-[10px] sm:text-[11px] font-mono text-sky-700 bg-sky-50 border border-sky-200 dark:text-sky-400 dark:bg-sky-500/10 dark:border-sky-500/20 px-2 py-0.5 rounded shrink-0">
                 Hallucination Guardrails: Active
               </span>
             </div>
@@ -152,7 +152,7 @@ export function HeroInteractivePreview() {
         )}
 
         {tab === 'web' && (
-          <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-sky-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl p-6 sm:p-8">
+          <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-sky-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl p-4 sm:p-6 md:p-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 dark:border-white/10 gap-4">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -198,7 +198,7 @@ export function HeroInteractivePreview() {
         )}
 
         {tab === 'robotics' && (
-          <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-emerald-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl p-6 sm:p-8">
+          <div className="bg-white dark:bg-[#0A101D] border border-slate-200 dark:border-emerald-500/30 rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl p-4 sm:p-6 md:p-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-200 dark:border-white/10 gap-4">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">

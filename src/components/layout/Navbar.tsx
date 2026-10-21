@@ -27,6 +27,8 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [businessDropdown, setBusinessDropdown] = useState(false);
   const [learnDropdown, setLearnDropdown] = useState(false);
+  const [mobileBusinessOpen, setMobileBusinessOpen] = useState(true);
+  const [mobileLearnOpen, setMobileLearnOpen] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
@@ -44,6 +46,23 @@ export function Navbar() {
     setBusinessDropdown(false);
     setLearnDropdown(false);
   }, [pathname]);
+
+  // Lock body scroll and support Escape key when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setIsOpen(false);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isOpen]);
 
   const businessItems = [
     {
@@ -108,32 +127,32 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Brand Identity */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-sky-500 rounded-lg p-1 shrink-0"
           >
-            <div className="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex items-center justify-center p-1.5 shadow-sm group-hover:border-sky-500/50 transition-colors shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex items-center justify-center p-1.5 shadow-sm group-hover:border-sky-500/50 transition-colors shrink-0">
               <Image
                 src="/images/brand/creatikai-logo.png"
                 alt="Creatik AI Logo"
                 width={36}
                 height={36}
-                className="w-auto h-7 object-contain"
+                className="w-auto h-6 sm:h-7 object-contain"
                 priority
               />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-300 transition-colors">
+                <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-300 transition-colors">
                   Creatik
                 </span>
-                <span className="text-xs px-1.5 py-0.5 rounded font-mono font-semibold bg-sky-500/10 dark:bg-sky-500/20 text-sky-700 dark:text-sky-400 border border-sky-500/20 dark:border-sky-500/30">
+                <span className="text-[10px] sm:text-xs px-1.5 py-0.5 rounded font-mono font-semibold bg-sky-500/10 dark:bg-sky-500/20 text-sky-700 dark:text-sky-400 border border-sky-500/20 dark:border-sky-500/30">
                   AI
                 </span>
               </div>
-              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase">
+              <span className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase">
                 Jaipur • Applied Tech
               </span>
             </div>
@@ -331,108 +350,171 @@ export function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-10 h-10 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors"
               aria-expanded={isOpen}
               aria-label="Toggle navigation menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer with smooth scrolling and accessible touch targets */}
       {isOpen && (
-        <div className="lg:hidden border-b border-slate-200 dark:border-white/10 bg-white dark:bg-[#070B14] px-4 pt-2 pb-6 max-h-[85vh] overflow-y-auto shadow-xl">
-          <div className="space-y-4">
-            {/* For Business Section */}
-            <div className="pt-2">
-              <div className="flex items-center justify-between py-1 text-sm font-semibold text-sky-700 dark:text-sky-400 uppercase tracking-wider">
+        <div className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 z-40 bg-slate-900/40 dark:bg-black/60 backdrop-blur-xs flex flex-col justify-start">
+          <div className="border-b border-slate-200 dark:border-white/10 bg-white dark:bg-[#070B14] px-4 pt-3 pb-6 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] overflow-y-auto shadow-2xl space-y-4">
+            {/* For Business Section with Accordion */}
+            <div className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-[#0D1424] overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
+                className="w-full flex items-center justify-between px-3.5 py-3 text-sm font-bold text-sky-800 dark:text-sky-300"
+                aria-expanded={mobileBusinessOpen}
+              >
                 <span className="flex items-center gap-2">
-                  <Briefcase className="w-4 h-4" /> For Business
+                  <Briefcase className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                  <span>For Business</span>
                 </span>
-                <Link
-                  href="/business"
-                  className="text-xs text-slate-600 dark:text-slate-300 underline"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Overview
-                </Link>
-              </div>
-              <div className="mt-2 space-y-1 pl-2 border-l border-slate-200 dark:border-white/10">
-                {businessItems.map((item) => (
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-sky-100 dark:bg-sky-500/20 text-sky-700 dark:text-sky-300">
+                    4 Services
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${
+                      mobileBusinessOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </div>
+              </button>
+
+              {mobileBusinessOpen && (
+                <div className="px-2 pb-2 space-y-1 border-t border-slate-200/60 dark:border-white/5 pt-1.5">
                   <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block py-2 text-sm text-slate-700 dark:text-slate-200 hover:text-sky-600 dark:hover:text-sky-300"
+                    href="/business"
+                    className="flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold text-sky-700 dark:text-sky-400 hover:bg-sky-50 dark:hover:bg-sky-500/10 min-h-[44px]"
                     onClick={() => setIsOpen(false)}
                   >
-                    {item.title}
+                    <span>Overview & Architecture Strategy</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
-                ))}
-              </div>
+
+                  {businessItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-white/5 active:bg-slate-100 min-h-[44px] transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Icon className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
+                        <span className="truncate">{item.title}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
-            {/* Learn AI Section */}
-            <div className="pt-2">
-              <div className="flex items-center justify-between py-1 text-sm font-semibold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">
+            {/* Learn AI Section with Accordion */}
+            <div className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-[#0D1424] overflow-hidden">
+              <button
+                type="button"
+                onClick={() => setMobileLearnOpen(!mobileLearnOpen)}
+                className="w-full flex items-center justify-between px-3.5 py-3 text-sm font-bold text-emerald-800 dark:text-emerald-300"
+                aria-expanded={mobileLearnOpen}
+              >
                 <span className="flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4" /> Learn AI
+                  <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>Learn AI & Academy</span>
                 </span>
-                <Link
-                  href="/learn-ai"
-                  className="text-xs text-slate-600 dark:text-slate-300 underline"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Overview
-                </Link>
-              </div>
-              <div className="mt-2 space-y-1 pl-2 border-l border-slate-200 dark:border-white/10">
-                {learnItems.map((item) => (
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">
+                    4 Tracks
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${
+                      mobileLearnOpen ? 'rotate-180' : ''
+                    }`}
+                  />
+                </div>
+              </button>
+
+              {mobileLearnOpen && (
+                <div className="px-2 pb-2 space-y-1 border-t border-slate-200/60 dark:border-white/5 pt-1.5">
                   <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block py-2 text-sm text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-300"
+                    href="/learn-ai"
+                    className="flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 min-h-[44px]"
                     onClick={() => setIsOpen(false)}
                   >
-                    {item.title}
+                    <span>Overview & Curriculum Philosophy</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
-                ))}
-              </div>
+
+                  {learnItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-white/5 active:bg-slate-100 min-h-[44px] transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Icon className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                        <span className="truncate">{item.title}</span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             {/* General links */}
-            <div className="pt-2 border-t border-slate-200 dark:border-white/10 space-y-2">
+            <div className="pt-2 border-t border-slate-200 dark:border-white/10 space-y-1">
               <Link
                 href="/about"
-                className="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5 min-h-[44px]"
                 onClick={() => setIsOpen(false)}
               >
-                About Creatik AI
+                <span>About Creatik AI</span>
+                <span className="text-xs text-slate-400">Jaipur Lab</span>
               </Link>
               <Link
                 href="/insights"
-                className="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5 min-h-[44px]"
                 onClick={() => setIsOpen(false)}
               >
-                Insights &amp; Research
+                <span>Insights &amp; Research</span>
+                <span className="text-xs text-slate-400">4 Articles</span>
               </Link>
               <Link
                 href="/contact"
-                className="block py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5 min-h-[44px]"
                 onClick={() => setIsOpen(false)}
               >
-                Contact &amp; Inquiries
+                <span>Contact &amp; Inquiries</span>
+                <span className="text-xs text-slate-400">Jaipur Hub</span>
               </Link>
             </div>
 
-            <div className="pt-3 flex flex-col gap-2">
+            {/* Bottom Mobile Action Buttons */}
+            <div className="pt-2 flex flex-col gap-2">
               <Link
-                href="/contact"
-                className="w-full text-center py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium text-sm shadow-md"
+                href="/contact?intent=business"
+                className="w-full text-center py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs sm:text-sm shadow-md shadow-sky-600/20 min-h-[44px] flex items-center justify-center gap-2"
                 onClick={() => setIsOpen(false)}
               >
-                Initiate Project / Training Inquiry
+                <Briefcase className="w-4 h-4" />
+                <span>Enterprise Business Inquiry</span>
+              </Link>
+              <Link
+                href="/contact?intent=learn"
+                className="w-full text-center py-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-800 dark:text-slate-200 font-semibold text-xs sm:text-sm min-h-[44px] flex items-center justify-center gap-2"
+                onClick={() => setIsOpen(false)}
+              >
+                <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>Student Lab &amp; Course Admissions</span>
               </Link>
             </div>
           </div>

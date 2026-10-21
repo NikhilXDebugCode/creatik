@@ -28,33 +28,33 @@ export const metadata: Metadata = {
 
 export default function DigitalMarketingPage() {
   return (
-    <div className="pt-28 pb-20">
+    <div className="pt-20 sm:pt-28 pb-16 sm:pb-20">
       {/* Hero */}
-      <section className="py-16 md:py-24 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative tech-grid-pattern">
+      <section className="py-12 sm:py-16 md:py-24 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5 relative tech-grid-pattern">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 text-xs font-semibold text-emerald-700 dark:text-emerald-400 mb-4">
                 <TrendingUp className="w-3.5 h-3.5" />
                 <span>Growth Engineering Track • Jaipur Hub</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 {program.heroHeadline}
               </h1>
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base md:text-lg mt-3 sm:mt-4 leading-relaxed">
                 {program.heroSubheadline}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <a
                   href="#curriculum"
-                  className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm transition-all shadow-md shadow-emerald-600/25"
+                  className="w-full sm:w-auto min-h-[44px] px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm transition-all shadow-md shadow-emerald-600/25 flex items-center justify-center text-center"
                 >
                   Inspect Curriculum
                 </a>
                 <a
                   href="#enroll"
-                  className="px-6 py-3 rounded-xl bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-200 font-medium text-sm transition-all shadow-sm"
+                  className="w-full sm:w-auto min-h-[44px] px-6 py-3 rounded-xl bg-white dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-200 font-medium text-sm transition-all shadow-sm flex items-center justify-center text-center"
                 >
                   Request Batch Schedule
                 </a>
@@ -84,12 +84,12 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Outcomes & Prerequisites */}
-      <section className="py-16 bg-white dark:bg-[#090E1A] border-b border-slate-200 dark:border-white/5">
+      <section className="py-12 sm:py-16 bg-white dark:bg-[#090E1A] border-b border-slate-200 dark:border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="bg-slate-50 dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
+            <div className="bg-slate-50 dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl p-5 sm:p-8 shadow-sm">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <span>Growth Engineering Capabilities</span>
               </h2>
               <ul className="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
@@ -102,9 +102,9 @@ export default function DigitalMarketingPage() {
               </ul>
             </div>
 
-            <div className="bg-slate-50 dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+            <div className="bg-slate-50 dark:bg-[#0D1424] border border-slate-200 dark:border-white/10 rounded-2xl p-5 sm:p-8 shadow-sm">
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-sky-600 dark:text-sky-400 shrink-0" />
                 <span>Prerequisites & Tool Requirements</span>
               </h2>
               <ul className="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
@@ -132,31 +132,31 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Curriculum Breakdown */}
-      <section id="curriculum" className="py-20 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section id="curriculum" className="py-12 sm:py-16 md:py-20 bg-slate-50 dark:bg-[#070B14] border-b border-slate-200 dark:border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Module-by-Module Curriculum</h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Module-by-Module Curriculum</h2>
+            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
               Each module concludes with a live campaign setup, conversion pipeline, or programmatic SEO build.
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {program.curriculumModules.map((mod) => (
               <div
                 key={mod.moduleNumber}
-                className="bg-white dark:bg-[#0B1222] border border-slate-200 dark:border-white/10 rounded-2xl p-6 sm:p-8 hover:border-emerald-400 dark:hover:border-emerald-500/30 transition-all shadow-sm"
+                className="bg-white dark:bg-[#0B1222] border border-slate-200 dark:border-white/10 rounded-2xl p-4 sm:p-6 md:p-8 hover:border-emerald-400 dark:hover:border-emerald-500/30 transition-all shadow-sm"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-4 border-b border-slate-200 dark:border-white/5">
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 dark:text-emerald-400 dark:bg-emerald-500/10 dark:border-emerald-500/20 px-2.5 py-1 rounded">
                       Module {mod.moduleNumber}
                     </span>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">{mod.title}</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">{mod.title}</h3>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-2">
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-2">
                       Key Topics Covered:
@@ -171,7 +171,7 @@ export default function DigitalMarketingPage() {
                     </ul>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+                  <div className="p-3.5 sm:p-4 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
                     <div className="flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-1.5">
                       <FolderGit2 className="w-4 h-4" />
                       <span>Practical Project Deliverable:</span>
@@ -186,9 +186,9 @@ export default function DigitalMarketingPage() {
       </section>
 
       {/* Enrollment Request Form */}
-      <section id="enroll" className="py-20 bg-white dark:bg-[#090E1A]">
+      <section id="enroll" className="py-12 sm:py-16 md:py-20 bg-white dark:bg-[#090E1A]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 sm:mb-10">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
               Request Growth Engineering Syllabus PDF
             </h2>

@@ -34,7 +34,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
   if (!mounted) {
     return (
       <div
-        className={`w-9 h-9 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 ${className}`}
+        className={`w-10 h-10 min-w-[40px] min-h-[40px] rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 ${className}`}
       />
     );
   }
@@ -44,7 +44,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       onClick={toggleTheme}
       type="button"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
-      className={`relative p-2 rounded-xl transition-all duration-200 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0B1222] text-slate-700 dark:text-slate-200 hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-300 dark:hover:border-sky-500/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 flex items-center justify-center ${className}`}
+      className={`relative w-10 h-10 min-w-[40px] min-h-[40px] p-2 rounded-xl transition-all duration-200 border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0B1222] text-slate-700 dark:text-slate-200 hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-300 dark:hover:border-sky-500/40 shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 flex items-center justify-center ${className}`}
     >
       {theme === 'light' ? (
         <Moon className="w-4 h-4 text-slate-700 hover:text-sky-600 transition-transform duration-200 hover:scale-110" />
