@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -24,6 +25,7 @@ import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { siteConfig } from '@/data/siteConfig';
 
 export function Navbar() {
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [businessDropdown, setBusinessDropdown] = useState(false);
   const [learnDropdown, setLearnDropdown] = useState(false);
@@ -31,6 +33,10 @@ export function Navbar() {
   const [mobileLearnOpen, setMobileLearnOpen] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,16 +57,19 @@ export function Navbar() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') setIsOpen(false);
       };
       window.addEventListener('keydown', handleKeyDown);
       return () => {
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         window.removeEventListener('keydown', handleKeyDown);
       };
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
   }, [isOpen]);
 
@@ -119,13 +128,16 @@ export function Navbar() {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        isScrolled
-          ? 'bg-white/90 dark:bg-[#070B14]/90 backdrop-blur-md border-b border-slate-200/80 dark:border-white/10 shadow-sm dark:shadow-lg dark:shadow-black/20'
-          : 'bg-white/75 dark:bg-[#070B14]/70 backdrop-blur-sm border-b border-slate-200/50 dark:border-white/5'
-      }`}
-    >
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          isOpen
+            ? 'bg-white dark:bg-[#070B14] border-b border-slate-200 dark:border-white/10 shadow-sm'
+            : isScrolled
+            ? 'bg-white/95 dark:bg-[#070B14]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-white/10 shadow-sm dark:shadow-lg dark:shadow-black/20'
+            : 'bg-white/75 dark:bg-[#070B14]/70 backdrop-blur-sm border-b border-slate-200/50 dark:border-white/5'
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20 gap-3">
           {/* Brand Identity */}
@@ -349,27 +361,49 @@ export function Navbar() {
           <div className="flex items-center gap-2 lg:hidden shrink-0">
             <ThemeToggle />
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="w-10 h-10 min-w-[40px] min-h-[40px] flex items-center justify-center rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors shrink-0"
+              className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors shrink-0"
               aria-expanded={isOpen}
-              aria-label="Toggle navigation menu"
+              aria-controls="mobile-navigation-drawer"
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isOpen ? <X className="w-5 h-5 text-sky-600 dark:text-sky-400" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
+    </header>
 
-      {/* Mobile drawer with smooth scrolling and accessible touch targets */}
-      {isOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 z-50 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm flex flex-col justify-start">
-          <div className="border-b border-slate-200 dark:border-white/10 bg-white dark:bg-[#070B14] px-4 pt-3 pb-8 max-h-[calc(100dvh-4rem)] sm:max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain shadow-2xl space-y-4">
+    {/* Mobile Drawer via React Portal directly into document.body */}
+    {mounted && isOpen && createPortal(
+      <div
+        id="mobile-navigation-root"
+        className="lg:hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation Menu"
+      >
+        {/* Full-screen backdrop covering all underlying page content */}
+        <div
+          className="fixed inset-0 z-40 bg-slate-950/80 dark:bg-black/90 backdrop-blur-sm transition-opacity"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+
+        {/* Full-height foreground drawer panel with solid opaque background filling entire viewport below header */}
+        <div
+          id="mobile-navigation-drawer"
+          className="fixed inset-x-0 top-16 sm:top-20 bottom-0 z-50 bg-white dark:bg-[#070B14] flex flex-col overflow-y-auto overscroll-contain shadow-2xl"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
+          <div className="max-w-2xl mx-auto w-full px-4 pt-3 pb-12 space-y-4 flex-1">
             {/* For Business Section with Accordion */}
             <div className="rounded-xl border border-slate-200/80 dark:border-white/10 bg-slate-50/60 dark:bg-[#0D1424] overflow-hidden">
               <button
                 type="button"
                 onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
-                className="w-full flex items-center justify-between px-3.5 py-3 text-sm font-bold text-sky-800 dark:text-sky-300"
+                className="w-full flex items-center justify-between px-3.5 py-3 text-sm font-bold text-sky-800 dark:text-sky-300 min-h-[44px]"
                 aria-expanded={mobileBusinessOpen}
               >
                 <span className="flex items-center gap-2">
@@ -422,7 +456,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileLearnOpen(!mobileLearnOpen)}
-                className="w-full flex items-center justify-between px-3.5 py-3 text-sm font-bold text-emerald-800 dark:text-emerald-300"
+                className="w-full flex items-center justify-between px-3.5 py-3 text-sm font-bold text-emerald-800 dark:text-emerald-300 min-h-[44px]"
                 aria-expanded={mobileLearnOpen}
               >
                 <span className="flex items-center gap-2">
@@ -517,9 +551,22 @@ export function Navbar() {
                 <span>Student Lab &amp; Course Admissions</span>
               </Link>
             </div>
+
+            {/* Tap to close helper */}
+            <div className="pt-2 text-center">
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 py-2 px-4 rounded-lg min-h-[44px]"
+              >
+                ✕ Close Navigation Menu
+              </button>
+            </div>
           </div>
         </div>
-      )}
-    </header>
-  );
+      </div>,
+      document.body
+    )}
+  </>
+);
 }

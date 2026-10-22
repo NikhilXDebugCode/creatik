@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import {
   Mail,
+  Phone,
   MapPin,
   Clock,
   ShieldCheck,
@@ -94,6 +95,26 @@ export default function ContactPage() {
 
                   <div className="flex items-start gap-3.5 pt-4 border-t border-slate-200 dark:border-white/5">
                     <div className="w-9 h-9 rounded-lg bg-sky-100 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 shadow-sm">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
+                        Telephone &amp; WhatsApp
+                      </span>
+                      <a
+                        href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+                        className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-300 transition-colors block"
+                      >
+                        {siteConfig.contact.phone}
+                      </a>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        Alternate support line: {siteConfig.contact.alternatePhone}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 pt-4 border-t border-slate-200 dark:border-white/5">
+                    <div className="w-9 h-9 rounded-lg bg-sky-100 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 shadow-sm">
                       <Clock className="w-4 h-4" />
                     </div>
                     <div>
@@ -108,14 +129,6 @@ export default function ContactPage() {
                       </p>
                     </div>
                   </div>
-                </div>
-
-                {/* Telephone disclosure */}
-                <div className="p-3 sm:p-3.5 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-xs text-amber-800 dark:text-amber-300/90 leading-relaxed flex items-start gap-2.5">
-                  <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400" />
-                  <span>
-                    <strong>Carrier Verification Notice:</strong> Voice &amp; WhatsApp hotlines are temporarily held offline pending carrier registration checks. Please submit your inquiry through the encrypted form or email.
-                  </span>
                 </div>
               </div>
             </div>

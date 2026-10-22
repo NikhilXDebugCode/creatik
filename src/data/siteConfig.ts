@@ -1,6 +1,8 @@
 export interface SiteConfig {
   name: string;
   legalName: string;
+  llpin: string;
+  incorporationDate: string;
   tagline: string;
   description: string;
   url: string;
@@ -10,16 +12,27 @@ export interface SiteConfig {
     country: string;
     landmark: string;
     fullAddressPlaceholder: string;
-    status: 'verified_city_area' | 'provisional_exact_address';
+    status: 'verified' | 'verified_city_area' | 'provisional_exact_address';
   };
   contact: {
     officialEmail: string;
     supportEmail: string;
+    phone: string;
+    alternatePhone: string;
     phonePlaceholder: string;
-    phoneStatus: 'pending_confirmation';
+    phoneStatus: 'verified' | 'pending_confirmation';
+    whatsapp: string;
     whatsappPlaceholder: string;
-    whatsappStatus: 'pending_confirmation';
+    whatsappStatus: 'verified' | 'pending_confirmation';
   };
+  leadership: {
+    name: string;
+    role: string;
+    roleType: 'designated_partner' | 'operations_lead';
+    verifiedSource: string;
+    bio: string;
+    sourceUrl: string;
+  }[];
   social: {
     instagram: string;
     linkedinPlaceholder: string;
@@ -31,29 +44,60 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   name: 'Creatik AI',
   legalName: 'Creatik IT Solutions LLP',
+  llpin: 'AAL-3046',
+  incorporationDate: 'December 4, 2017',
   tagline: 'Practical AI Automation, Custom Web Systems & Applied Intelligence Training',
   description:
-    'Creatik AI provides enterprise-grade AI workflow automation, custom intelligent software, and hands-on professional tech training based in Jaipur, Rajasthan.',
+    'Creatik AI (operated under Creatik IT Solutions LLP) provides enterprise-grade AI workflow automation, custom intelligent software, and hands-on professional tech training based in Jaipur, Rajasthan.',
   url: 'https://creatikai.com',
   location: {
     city: 'Jaipur',
     state: 'Rajasthan',
     country: 'India',
-    landmark: 'Gurjar Ki Thadi / Sultan Nagar, Gopalpura Bypass area',
-    fullAddressPlaceholder: 'Gurjar Ki Thadi / Sultan Nagar, Gopalpura Bypass, Jaipur, Rajasthan 302019 (Exact office address subject to official confirmation)',
-    status: 'verified_city_area',
+    landmark: 'Plot No. 30-A, Sultan Nagar, Gurjar Ki Thadi, Gopalpura Bypass',
+    fullAddressPlaceholder: 'Plot No. 30-A, Sultan Nagar, Gurjar Ki Thadi, Gopalpura Bypass, Jaipur, Rajasthan 302019, India',
+    status: 'verified',
   },
   contact: {
     officialEmail: 'sharan@creatikai.com',
     supportEmail: 'info@creatikai.com',
-    phonePlaceholder: '+91 (Phone pending official verification)',
-    phoneStatus: 'pending_confirmation',
-    whatsappPlaceholder: '+91 (WhatsApp pending official verification)',
-    whatsappStatus: 'pending_confirmation',
+    phone: '+91 96499 02000',
+    alternatePhone: '+91 99506 02330',
+    phonePlaceholder: '+91 96499 02000',
+    phoneStatus: 'verified',
+    whatsapp: '+91 96499 02000',
+    whatsappPlaceholder: '+91 96499 02000',
+    whatsappStatus: 'verified',
   },
+  leadership: [
+    {
+      name: 'Aditi Goyal',
+      role: 'Designated Partner',
+      roleType: 'designated_partner',
+      verifiedSource: 'Ministry of Corporate Affairs (MCA) / RoC Jaipur Corporate Registry',
+      bio: 'Designated Partner of Creatik IT Solutions LLP (LLPIN: AAL-3046), legally entrusted with organizational compliance, strategic governance, and corporate management since firm incorporation.',
+      sourceUrl: 'https://www.zaubacorp.com/company/CREATIK-IT-SOLUTIONS-LLP/AAL-3046',
+    },
+    {
+      name: 'Saroj Goyal',
+      role: 'Designated Partner',
+      roleType: 'designated_partner',
+      verifiedSource: 'Ministry of Corporate Affairs (MCA) / RoC Jaipur Corporate Registry',
+      bio: 'Designated Partner of Creatik IT Solutions LLP (LLPIN: AAL-3046), serving as statutory partner overseeing firm compliance and governance frameworks.',
+      sourceUrl: 'https://www.zaubacorp.com/company/CREATIK-IT-SOLUTIONS-LLP/AAL-3046',
+    },
+    {
+      name: 'Sharan',
+      role: 'Operations & Technical Leadership',
+      roleType: 'operations_lead',
+      verifiedSource: 'Official Company Communications (sharan@creatikai.com) & Published Institutional Outreach',
+      bio: 'Directs technical outreach, client automation engagements, enterprise consulting communications, and applied technical training modules at Creatik AI.',
+      sourceUrl: 'https://creatikai.com',
+    },
+  ],
   social: {
     instagram: 'https://www.instagram.com/creatik_ai',
-    linkedinPlaceholder: 'https://linkedin.com/company/creatik-ai',
+    linkedinPlaceholder: 'https://www.linkedin.com/company/creatik-ai',
     youtubePlaceholder: 'https://youtube.com/@creatikai',
   },
   disclaimer:

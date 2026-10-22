@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Mail,
+  Phone,
   MapPin,
   Clock,
   ShieldCheck,
@@ -48,6 +49,26 @@ export function ContactSection() {
                   </a>
                   <p className="text-[11px] text-slate-500 mt-0.5">
                     General inquiries: {siteConfig.contact.supportEmail}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-white dark:bg-[#0B1222] border border-slate-200 dark:border-white/10 shadow-sm">
+                <div className="w-9 h-9 rounded-lg bg-sky-100 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/20 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">
+                    Direct Telephone &amp; WhatsApp
+                  </span>
+                  <a
+                    href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+                    className="text-sm font-semibold text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-300 transition-colors"
+                  >
+                    {siteConfig.contact.phone}
+                  </a>
+                  <p className="text-[11px] text-slate-500 mt-0.5">
+                    Alternate: {siteConfig.contact.alternatePhone}
                   </p>
                 </div>
               </div>

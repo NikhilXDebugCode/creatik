@@ -4,6 +4,7 @@ import Image from 'next/image';
 import {
   Cpu,
   Mail,
+  Phone,
   MapPin,
   ShieldCheck,
   ArrowUpRight,
@@ -85,9 +86,14 @@ export function Footer() {
                 </a>
               </div>
 
-              <div className="flex items-center gap-2 text-[11px] text-amber-800 dark:text-amber-400/90 bg-amber-50 dark:bg-amber-500/10 px-2.5 py-1.5 rounded border border-amber-200 dark:border-amber-500/20 max-w-sm">
-                <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-                <span>Phone &amp; WhatsApp channels currently awaiting carrier verification. Please use official email for all verified communications.</span>
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0" />
+                <a
+                  href={`tel:${siteConfig.contact.phone.replace(/\s+/g, '')}`}
+                  className="text-slate-800 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-300 transition-colors py-1 inline-block"
+                >
+                  {siteConfig.contact.phone}
+                </a>
               </div>
             </div>
           </div>
